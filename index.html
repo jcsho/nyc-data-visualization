@@ -7,24 +7,16 @@
         <meta name="keywords" content="data, visualization, vega, nyc, new york, javascript">
         <meta name="author" content="Justin Ho, Kim Van">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+        <style>body { font-family: 'Heebo', sans-serif; }</style>
     </head>
 
     <body>
-        <div id="vis"></div>
-        <div id="map"></div>
-
-        <!-- import Vega for creating visulization -->
-        <script src="https://cdn.jsdelivr.net/npm/vega@4.2.0"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vega-lite@3.0.3"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vega-embed@3.30.0"></script>
-
-        <!-- ! DEVELOPMENT ONLY -->
-        <!-- ! CONSIDER CHANGING TO FETCH WHEN SERVED OVER HTTP -->
-        <!-- embed spec files for Vega visualization(s) -->
-        <script src="./js/spec/nyc-linked-vegalite-spec.js"></script>
-
-        <!-- final visualization files -->
-        <script src="./js/functions.js"></script>
-        <script src="./js/main.js"></script>
+        <h1>IAT 355 Final Project - NYC Crime Data</h1>
+        <h2>Kim Van - Justin Ho</h2>
+        <h2>Wealth of NYC's 5 Largest Counties</h2>
+        <div id="scatter-plot"></div>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="/main.js"></script>
     </body>
 </html>
