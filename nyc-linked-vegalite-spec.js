@@ -54,6 +54,7 @@ const nyc = {
             "value": "lightgray"
           }
         },
+        "title": "Distribution of New Yorkers in the Workforce",
         "width": 400,
         "height": 300,
         "mark": "bar",
@@ -86,6 +87,7 @@ const nyc = {
             "type": "quantitative"
           }
         },
+        "title": "Household Income in New York",
         "width": 400,
         "height": 300,
         "mark": "point",
@@ -117,6 +119,7 @@ const nyc = {
             "value": "lightgray"
           }
         },
+        "title": "Record of Crime in New York",
         "width": 400,
         "height": 300,
         "mark": "bar",
