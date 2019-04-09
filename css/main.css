@@ -1,0 +1,74 @@
+body {
+    font-family: 'Rubik', sans-serif;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 2.5em;
+    margin: 0.7em 1.5em;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 1.2em;
+    margin: 0 5em;
+}
+
+h3 {
+    font-weight: 300;
+    font-size: 1em;
+    margin: 2.5em 0 0 3.5em;
+}
+
+#vis {
+    margin: 2em 1.5em;
+}
+
+/*!
+ * Font Awesome Free 5.8.1 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+ @font-face {
+    font-family: 'Font Awesome 5 Brands';
+    font-style: normal;
+    font-weight: normal;
+    font-display: auto;
+    src: url("./webfonts/fa-brands-400.eot");
+    src: url("./webfonts/fa-brands-400.eot?#iefix") format("embedded-opentype"), url("./webfonts/fa-brands-400.woff2") format("woff2"), url("./webfonts/fa-brands-400.woff") format("woff"), url("./webfonts/fa-brands-400.ttf") format("truetype"), url("./webfonts/fa-brands-400.svg#fontawesome") format("svg"); }
+  
+.fab {
+    font-family: 'Font Awesome 5 Brands';
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+
+.fa-github:before {
+    content: "\f09b"; 
+}
+
+#github-link {
+    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
+    background-color: #444444;
+    border-radius: 0.3em;
+    padding: 0.4em 0.7em;
+    display: inline-block;
+    text-decoration: none;
+    color: #EEEEEE;
+}
+
+#github-link:hover {
+    background-color: #EEEEEE;
+    color: #444444;
+}
+
+#github-link p {
+    display: inline-block;
+    margin: 0 0 0 0.4em;
+    font-size: 0.9em;
+}
