@@ -1,28 +1,48 @@
+:root {
+    /* colour palette from https://www.design-seeds.com/seasons/spring/rain-tones/ */
+    --white: #F6F6F6;
+    --pale-white: #EFEDEF;
+    --light-gray: #E0DFE0;
+    --dark-gray: #BEBABC;
+    --slate-gray: #525253;
+    --gray: #C3C3C3;
+}
+
 body {
     font-family: 'Rubik', sans-serif;
+    margin: 0;
+    color: var(--slate-gray);
+    background-color: var(--white);
+}
+
+#header {
+    padding: 8em 0 3em 25em;
 }
 
 h1 {
     font-weight: 400;
-    font-size: 2.5em;
-    margin: 0.7em 1.5em;
+    font-size: 3em;
+    margin: 0;
 }
 
 h2 {
     font-weight: 300;
     font-size: 1.2em;
-    margin: 0 5em;
+    margin: 0.5em 0 0 0;
 }
 
-h3 {
-    font-weight: 300;
-    font-size: 1em;
-    margin: 2.5em 0 0 6em;
+#graphs {
+    padding: 3em 0 0 10em;
 }
 
 #vis {
     display: block;
-    padding: 2em 6em;
+}
+
+#vis-tooltip {
+    font-weight: 300;
+    font-size: 1em;
+    margin: 3em 0 0.6em 15em;
 }
 
 /*!
@@ -54,22 +74,57 @@ h3 {
 
 #github-link {
     transition: background-color 0.2s ease;
-    background-color: #EEEEEE;
+    background-color: var(--light-gray);
     border-radius: 0.3em;
     padding: 0.4em 0.7em;
     display: inline-block;
     text-decoration: none;
-    color: #444444;
-    margin: 1em 0 0 6em;
+    color: var(--slate-gray);
+    margin: 1em 0 0 15em;
 }
 
 #github-link:hover {
-    background-color: #444444;
-    color: #EEEEEE;
+    background-color: var(--slate-gray);
+    color: var(--white);
 }
 
 #github-link p {
     display: inline-block;
     margin: 0 0 0 0.4em;
     font-size: 0.9em;
+}
+
+#data-story {
+    padding: 6em 35em 6em 25em;
+}
+
+#data-story h3 {
+    font-size: 1.7em;
+    margin: 1.5em 0 0 0;
+}
+
+#data-story  h4 {
+    font-size: 1.1em;
+    font-weight: 300;
+}
+
+#data-story  p {
+    font-weight: 300;
+    line-height: 2em;
+}
+
+#data-story  ol {
+    font-weight: 300;
+}
+
+#data-story li:not(:first-child) {
+    margin: 1em 0 0 0;
+}
+
+#data-story a {
+    color: var(--slate-gray);
+}
+
+#data-story a:hover {
+    color: var(--dark-gray);
 }

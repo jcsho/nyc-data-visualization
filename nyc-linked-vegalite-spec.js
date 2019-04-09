@@ -25,6 +25,35 @@ const nyc = {
     "columns": 3,
     "concat": [
       {
+        "encoding": {
+          "color": {
+            "condition": {
+              "title": "County",
+              "field": "County",
+              "selection": "brush",
+              "type": "nominal"
+            },
+            "value": "lightgrey"
+          },
+          "x": {
+            "axis": {"title": "Population"},
+            "field": "TotalPop",
+            "type": "quantitative"
+          },
+          "y": {
+            "axis": {"title": "Income"},
+            "field": "Income",
+            "type": "quantitative"
+          }
+        },
+        "title": "Household Income in New York",
+        "width": 400,
+        "height": 300,
+        "mark": "point",
+        "selection": {"brush": {"type": "interval"}},
+        "transform": [{"filter": {"selection": "click"}}]
+      },
+      {
         "transform": [
           {
             "fold": ["Construction", "Office", "Production", "Professional", "Service"],
@@ -64,35 +93,6 @@ const nyc = {
             "type": "multi"
           }
         }
-      },
-      {
-        "encoding": {
-          "color": {
-            "condition": {
-              "title": "County",
-              "field": "County",
-              "selection": "brush",
-              "type": "nominal"
-            },
-            "value": "lightgrey"
-          },
-          "x": {
-            "axis": {"title": "Population"},
-            "field": "TotalPop",
-            "type": "quantitative"
-          },
-          "y": {
-            "axis": {"title": "Income"},
-            "field": "Income",
-            "type": "quantitative"
-          }
-        },
-        "title": "Household Income in New York",
-        "width": 400,
-        "height": 300,
-        "mark": "point",
-        "selection": {"brush": {"type": "interval"}},
-        "transform": [{"filter": {"selection": "click"}}]
       },
       {
         "transform": [
