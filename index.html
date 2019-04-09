@@ -11,63 +11,88 @@
         <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
         <link rel="manifest" href="./assets/site.webmanifest">
         <link href="https://fonts.googleapis.com/css?family=Rubik:300,400" rel="stylesheet">
-        <link rel="stylesheet" href="./css/main.css">
+        <!-- <link rel="stylesheet" href="./css/main.css"> -->
+        <link rel="stylesheet" href="./css/bem.css">
     </head>
 
     <body>
-        <div id="header">
-            <h1>New York Crime Data Analysis</h1>
-            <h2>IAT 355 Final Project</h2>
-            <h2>Kim Van + Justin Ho</h2>
-        </div>
+        <header class="header">
+            <h1 class="header__title">New York Crime Data Analysis</h1>
+            <h2 class="header__subtitle">IAT 355 Final Project</h2>
+            <h2 class="header__subtitle">Kim Van + Justin Ho</h2>
+        </header>
 
-        <div id="graphs">
-            <div id="vis"></div>
-            <p id="vis-tooltip">Click on the sections of the bar chart or drag your mouse across the scatter plot to see more details.</p>
-            <a id="github-link" href="http://github.com/justinhodev/nyc-data-visualization">
-                <i class="fab fa-github"></i>
-                <p>see code on Github</p>
-            </a>
-        </div>
+        <main>
+            <section class="section">
+                <figure class="fig">
+                    <!-- TODO - change to semantic tag, remove id attribute -->
+                    <div id="vis"></div>
+                    <figcaption class="fig__caption">Click on the sections of the bar chart or drag your mouse across the scatter plot to see more details.</figcaption>
+                    <a class="btn btn--light" href="http://github.com/justinhodev/nyc-data-visualization">
+                        <i class="btn__icon fab fa-github"></i>
+                        <span class="btn__text">SEE SOURCE CODE</span>
+                    </a>
+                </figure>
+            </section>
 
-        <div id="data-story">
-            <h3>Defining the Problem</h3>
-            <p>This project is designed to help people be more aware about how socioeconomic status affects crimes that happen in New York State. The primary audience is aimed at helping security agencies to strategize how to mitigate and prevent crimes in areas with high crime rate, based on the area’s socioeconomic status. The secondary audience are residents of New York State who should be aware of the crime rate to take precautions in their own safety.</p>
+            <section class="section section--padded">
+                <article class="section__item">
+                    <h3 class="section__heading">Defining the Problem</h3>
 
-            <h3>Creating an Approach</h3>
-            <p><!-- some explanation text--></p>
+                    <p class="section__text">This project is designed to help people be more aware about how socioeconomic status affects crimes that happen in New York State. The primary audience is aimed at helping security agencies to strategize how to mitigate and prevent crimes in areas with high crime rate, based on the area’s socioeconomic status. The secondary audience are residents of New York State who should be aware of the crime rate to take precautions in their own safety.</p>
+                </article>
 
-            <h4>Bottom Up Quesitons</h4>
-            <ol>
-                <li>Which County of New York State has the most crime?</li>
-                <li>In which County has the highest count for each crime type?</li>
-                <li>Does County's economic status affect crime count?</li>
-                <li>Do residents that make a higher than average amount of income need to be more concern of their safety?</li>
-                <li>What are the common type of crime in each County?</li>
-                <li>Does a County’s population affect crime count?</li>
-                <li>What is the income trend in a County’s population?</li>
-            </ol>
+                <article class="section__item">
+                    <h3 class="section__heading">Creating an Approach</h3>
 
-            <h3>Designing the Visualizations</h3>
-            <p>There are three interactions with two different visualizations. One is a scatter plot visualization that we used to see how a Countys' average income correlates with its population. The scatter plot visualization has the points in a shape to make it easier to distinguish each county’s point to each other  The second visualization is a bar graph that compares County’s type of crimes to each other.</p>
-            
-            <p>Starting from the scatter plot visualization the user can hover on a point to view in detail the County’s name, average income and population count. Then the user can brush on the scatter plot visualization, it will link to a bar graph that would show for each County, the  sum of crime index count and the type of crimes. On the bar graph if you were to click on a County’s colour on a bar, it will filter to show only that County in each Crime count and filter on the scatter plot.</p>
+                    <p class="section__text"><!-- some explanation text--></p>
 
-            <h3>Reflections and Insights</h3>
-            <p>Scatter Plot Visualization addresses the question “What is the income trend in a County’s population?”. The main insight is that New York County has a wide range of income and population. It says that their socio-economic status of the County is from the lower class to higher class and the population ranges from low to high as well. While Bronx shows to have a high amount of population but low income, we can see there is an outlier area in Bronx that has a large amount of population with low income.</p>
+                    <h4 class="section__subheading">Analytical Bottom Up Questions</h4>
+                    <ol class="section__list">
+                        <li class="section__list-item">Which County of New York State has the most crime?</li>
+                        <li class="section__list-item">In which County has the highest count for each crime type?</li>
+                        <li class="section__list-item">Does County's economic status affect crime count?</li>
+                        <li class="section__list-item">Do residents that make a higher than average amount of income need to be more concern of their safety?</li>
+                        <li class="section__list-item">What are the common type of crime in each County?</li>
+                        <li class="section__list-item">Does a County’s population affect crime count?</li>
+                        <li class="section__list-item">What is the income trend in a County’s population?</li>
+                    </ol>
+                </article>
 
-            <p>Bar Graph Visualization addresses the question “What are the common type of crime in each County?” Overall, the highest index count of the crimes would go to Kings and you can see when clicked on, that the type of crime that is common is Property Count. What is interesting is that Kings also has the highest Firearm crime count. The other County’s also has their common crime to be property.</p>
+                <article class="section__item">
+                    <h3 class="section__heading">Designing the Visualizations</h3>
 
-            <p>Together the Scatter Plot Visualization and Bar Graph Visualization addresses the question “Does County's economic status affect crime count?”. It may not address it exactly but there are insights from the scatter plot that shows economic status and the type of crime count. From the County, Kings, you can see that that their economic status is low to middle class with a cluster of middle population count. Compared to Bronx that has a pretty low population but has a huge range of income.  These new insights may not answer this question exactly but it does bring new questions up that would require more data. Does high income count mean low crime count? Vise versa, Does low income mean high crime count?</p>
+                    <p class="section__text">There are three interactions with two different visualizations. One is a scatter plot visualization that we used to see how a Countys' average income correlates with its population. The scatter plot visualization has the points in a shape to make it easier to distinguish each county’s point to each other  The second visualization is a bar graph that compares County’s type of crimes to each other.</p>
+                    
+                    <p class="section__text">Starting from the scatter plot visualization the user can hover on a point to view in detail the County’s name, average income and population count. Then the user can brush on the scatter plot visualization, it will link to a bar graph that would show for each County, the  sum of crime index count and the type of crimes. On the bar graph if you were to click on a County’s colour on a bar, it will filter to show only that County in each Crime count and filter on the scatter plot.</p>
+                </article>
 
-            <h3>Resources</h3>
-            <ul>
-                <li><a href="https://www.kaggle.com/new-york-state/nys-index,-violent,-property,-and-firearm-rates?fbclid=IwAR2Yy57flFW325ZXnrsQvy23GhHSVgS71fg4dMkjjS2ZconqTyhCbrsiOhU">Dataset - NYS Index, Violent, Property, and Firearm Rates</a></li>
-                <li><a href="https://www.kaggle.com/muonneutrino/new-york-city-census-data?fbclid=IwAR3AYByrHxOKYs7XabJIEkGlft5Zn5sQrAfNk6T5O57vDzppPDBdsW8k5tU#nyc_census_tracts.csv">Dataset - New York City Census Data</a></li>
-                <li><a href="https://vega.github.io/vega/">Vega</a></li>
-                <li><a href="https://vega.github.io/vega-lite/">Vega-Lite</a></li>
-            </ul>
-        </div>
+                <article class="section__item">
+                    <h3 class="section__heading">Reflections and Insights</h3>
+
+                    <p class="section__text">Scatter Plot Visualization addresses the question “What is the income trend in a County’s population?”. The main insight is that New York County has a wide range of income and population. It says that their socio-economic status of the County is from the lower class to higher class and the population ranges from low to high as well. While Bronx shows to have a high amount of population but low income, we can see there is an outlier area in Bronx that has a large amount of population with low income.</p>
+
+                    <p class="section__text">Bar Graph Visualization addresses the question “What are the common type of crime in each County?” Overall, the highest index count of the crimes would go to Kings and you can see when clicked on, that the type of crime that is common is Property Count. What is interesting is that Kings also has the highest Firearm crime count. The other County’s also has their common crime to be property.</p>
+
+                    <p class="section__text">Together the Scatter Plot Visualization and Bar Graph Visualization addresses the question “Does County's economic status affect crime count?”. It may not address it exactly but there are insights from the scatter plot that shows economic status and the type of crime count. From the County, Kings, you can see that that their economic status is low to middle class with a cluster of middle population count. Compared to Bronx that has a pretty low population but has a huge range of income.  These new insights may not answer this question exactly but it does bring new questions up that would require more data. Does high income count mean low crime count? Vise versa, Does low income mean high crime count?</p>
+                </article>
+
+                <article class="section__item">
+                    <h3 class="section__heading">Resources</h3>
+
+                    <ul class="section__list">
+                        <li class="section__list-item"><a class="link" href="https://www.kaggle.com/new-york-state/nys-index,-violent,-property,-and-firearm-rates?fbclid=IwAR2Yy57flFW325ZXnrsQvy23GhHSVgS71fg4dMkjjS2ZconqTyhCbrsiOhU">Dataset - NYS Index, Violent, Property, and Firearm Rates</a></li>
+                        <li class="section__list-item"><a class="link" href="https://www.kaggle.com/muonneutrino/new-york-city-census-data?fbclid=IwAR3AYByrHxOKYs7XabJIEkGlft5Zn5sQrAfNk6T5O57vDzppPDBdsW8k5tU#nyc_census_tracts.csv">Dataset - New York City Census Data</a></li>
+                        <li class="section__list-item"><a class="link" href="https://vega.github.io/vega/">Vega</a></li>
+                        <li class="section__list-item"><a class="link" href="https://vega.github.io/vega-lite/">Vega-Lite</a></li>
+                    </ul>
+                </article>
+            </section>
+        </main>
+
+        <footer>
+            <!-- insert stuff here -->
+        </footer>
 
         <!-- import Vega for creating visulization -->
         <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
