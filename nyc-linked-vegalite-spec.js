@@ -22,8 +22,37 @@ const nyc = {
         "sample": 600
       }
     ],
-    "columns": 2,
+    "columns": 3,
     "concat": [
+      {
+        "encoding": {
+          "color": {
+            "condition": {
+              "title": "County",
+              "field": "County",
+              "selection": "brush",
+              "type": "nominal"
+            },
+            "value": "lightgrey"
+          },
+          "x": {
+            "axis": {"title": "Population"},
+            "field": "TotalPop",
+            "type": "quantitative"
+          },
+          "y": {
+            "axis": {"title": "Income"},
+            "field": "Income",
+            "type": "quantitative"
+          }
+        },
+        "title": "Household Income in New York",
+        "width": 400,
+        "height": 300,
+        "mark": "point",
+        "selection": {"brush": {"type": "interval"}},
+        "transform": [{"filter": {"selection": "click"}}]
+      },
       {
         "transform": [
           {
@@ -54,6 +83,7 @@ const nyc = {
             "value": "lightgray"
           }
         },
+        "title": "Distribution of New Yorkers in the Workforce",
         "width": 400,
         "height": 300,
         "mark": "bar",
@@ -63,34 +93,6 @@ const nyc = {
             "type": "multi"
           }
         }
-      },
-      {
-        "encoding": {
-          "color": {
-            "condition": {
-              "title": "County",
-              "field": "County",
-              "selection": "brush",
-              "type": "nominal"
-            },
-            "value": "lightgrey"
-          },
-          "x": {
-            "axis": {"title": "Population"},
-            "field": "TotalPop",
-            "type": "quantitative"
-          },
-          "y": {
-            "axis": {"title": "Income"},
-            "field": "Income",
-            "type": "quantitative"
-          }
-        },
-        "width": 400,
-        "height": 300,
-        "mark": "point",
-        "selection": {"brush": {"type": "interval"}},
-        "transform": [{"filter": {"selection": "click"}}]
       },
       {
         "transform": [
@@ -117,6 +119,7 @@ const nyc = {
             "value": "lightgray"
           }
         },
+        "title": "Record of Crime in New York",
         "width": 400,
         "height": 300,
         "mark": "bar",
