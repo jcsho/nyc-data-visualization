@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>NYC Visualization</title>
+        <title>Crime Visualization</title>
         <meta charset="UTF-8">
-        <meta name="description" content="IAT 355 Final Project">
-        <meta name="keywords" content="data, visualization, vega, nyc, new york, javascript">
+        <meta name="description" content="New York Crime Visualization - IAT 355 Final Project">
         <meta name="author" content="Justin Ho, Kim Van">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+        <link rel="manifest" href="./assets/site.webmanifest">
         <link href="https://fonts.googleapis.com/css?family=Rubik:300,400" rel="stylesheet">
         <link rel="stylesheet" href="./css/main.css">
     </head>
@@ -31,6 +34,6 @@
         <!-- embed spec files for Vega visualization(s) -->
         <script src="./nyc-linked-vegalite-spec.js"></script>
         <!-- render graph in div -->
-        <script>vegaEmbed('#vis', nyc);</script>
+        <script>vegaEmbed('#vis', nyc, {"actions": false});</script>
     </body>
 </html>

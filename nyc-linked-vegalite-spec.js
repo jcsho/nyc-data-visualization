@@ -22,7 +22,7 @@ const nyc = {
         "sample": 600
       }
     ],
-    "columns": 2,
+    "columns": 3,
     "concat": [
       {
         "transform": [
