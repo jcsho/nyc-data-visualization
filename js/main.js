@@ -13,7 +13,7 @@ const getCrimesByCounty = async (county) => {
         row => row.get('County') == county,
     );
     return df;
-}
+};
 
 /**
  * Get all crime data for specified New York county
@@ -25,16 +25,17 @@ const getAllCrimeStat = async (counties) => {
         let df = await getCrimesByCounty(county);
         let crimes = {
             name: county,
-            index: df.stat.sum('Index Count'),
-            firearm: df.stat.sum('Firearm Count'),
-            violence: df.stat.sum('Violent Count'),
-            property: df.stat.sum('Property Count'),
+            index: parseFloat(df.stat.mean('Index Count').toPrecision(3)),
+            firearm: parseFloat(df.stat.mean('Firearm Count').toPrecision(3)),
+            violence: parseFloat(df.stat.mean('Violent Count').toPrecision(3)),
+            property: parseFloat(df.stat.mean('Property Count').toPrecision(3)),
         }
         return crimes;
     }));
 
     return counties;
-}
+};
+
 /**
  * get crime for set year onwards
  * @param {Number} minYear - minimum year to filter by
@@ -44,33 +45,65 @@ const getCrimesByYear = async (minYear) => {
     let df = await ny_crime;
     df = df.filter(row => row.get('Year') >= minYear);
     return df;
-}
+};
 
-getAllCrimeStat(Counties).then(async (counties) => {
-    let table = document.querySelector('.table--inject-data');
-    
-    table.innerHTML = /*html*/`
-        <tr class="table__row">
-            <th class="table__heading">County</th>
-            <th class="table__heading">Total Crimes</th>
-            <th class="table__heading">Firearm Crimes</th>
-            <th class="table__heading">Violence Crimes</th>
-            <th class="table__heading">Property Crimes</th>  
-        </tr>
-    `;
+// create tabular data from graphs
+// getAllCrimeStat(Counties).then((counties) => {
+//     let table = document.querySelector('.table--inject-data');
 
-    await Promise.all(counties.map((county) => {
-        let row = /*html*/`
-            <tbody class="table__body">
-                <tr class="table__row">
-                    <td class="table__text">${county.name}</td>
-                    <td class="table__text">${county.index}</td>
-                    <td class="table__text">${county.firearm}</td>
-                    <td class="table__text">${county.violence}</td>
-                    <td class="table__text">${county.property}</td>
-                </tr>
-            </tbody>
-        `
-        table.innerHTML += row;
-    }));
-}).catch(err => console.log(err));
+//     table.innerHTML = /*html*/ `
+//         <tr class="table__row">
+//             <th class="table__heading">County</th>
+//             <th class="table__heading">Total Crimes</th>
+//             <th class="table__heading">Firearm Crimes</th>
+//             <th class="table__heading">Violence Crimes</th>
+//             <th class="table__heading">Property Crimes</th>  
+//         </tr>
+//     `;
+
+//     counties.map((county) => {
+//         let row = /*html*/ `
+//             <tbody class="table__body">
+//                 <tr class="table__row">
+//                     <td class="table__text">${county.name}</td>
+//                     <td class="table__text">${county.index}</td>
+//                     <td class="table__text">${county.firearm}</td>
+//                     <td class="table__text">${county.violence}</td>
+//                     <td class="table__text">${county.property}</td>
+//                 </tr>
+//             </tbody>
+//         `
+//         table.innerHTML += row;
+//     });
+// }).catch(err => console.log(err));
+
+// get data from csv
+ny_crime.then((df) => {
+    // filter out data that's not used (older than 2015 and not the 5 specified counties)
+    df = df.filter((row) => {
+        return (
+            row.get('Year') >= 2015 &&
+            (row.get('County') === 'Bronx' || 
+            row.get('County') === 'Kings' || 
+            row.get('County') === 'New York' || 
+            row.get('County') === 'Queens' || 
+            row.get('County') === 'Richmond')
+        );
+    });
+
+    // df.show(); // show filtered data
+
+    // change to JS object and insert into spec object (nyc)
+    let crime_data = df.toCollection();
+    nyc.transform[0].from.data.values = crime_data;
+
+    // render the visuals
+    vegaEmbed('#vis', nyc, {
+        "actions": false
+    }).then((result) => {
+        // TODO see how to change HTML text from vega spec
+        // change first select option text (null to All)
+        document.querySelector("option[value='null']").innerHTML = "All";
+        // console.log(result.view); // show vega object
+    }).catch(err => console.log(err));
+});

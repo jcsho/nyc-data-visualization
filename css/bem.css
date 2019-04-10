@@ -39,7 +39,8 @@ body {
 
 /* section */
 .section {
-    padding: 3rem 0 0 10vw;
+    max-width: 100vw;
+    padding: 3rem 0 5rem 10vw;
 }
 
 .section--padded {
@@ -67,6 +68,14 @@ body {
 
 .section__list-item {
     margin: 1em 0 0 0;
+}
+
+.divider {
+    margin: 0 20vw;
+}
+
+.divider--light {
+    border-color: #0000001A;
 }
 
 /* links */
@@ -190,6 +199,9 @@ select {
     margin: 0 0 0 1em;
     background-color: var(--white);
     padding: 0.5em 0 0.5em 0.7em;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
     border-color: transparent;
     border-bottom-color: var(--slate-gray);
     color: var(--dark-gray);

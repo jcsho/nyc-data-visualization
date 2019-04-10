@@ -28,8 +28,8 @@
                 <figure class="fig">
                     <!-- TODO - change to semantic tag, remove id attribute -->
                     <div id="vis"></div>
-                    <figcaption class="fig__caption">Click on the sections of the bar chart or drag your mouse across the scatter plot to see more details.</figcaption>
-                    <a class="btn btn--light" href="http://github.com/justinhodev/nyc-data-visualization">
+                    <figcaption class="fig__caption">Click on the sections of the bar chart or select a County from the dropdown.</figcaption>
+                    <a class="btn btn--light" href="http://github.com/justinhodev/nyc-data-visualization" target="_blank">
                         <i class="btn__icon fab fa-github"></i>
                         <span class="btn__text">SEE SOURCE CODE</span>
                     </a>
@@ -37,12 +37,13 @@
             </section>
 
             <!-- tabular data -->
-
-            <section class="section">
-                <table class="table table--inject-data">
+            <!-- <section class="section section--padded"> -->
+                <!-- <table class="table table--inject-data"> -->
                     <!-- injected from main.js -->
-                </table>
-            </section>
+                <!-- </table> -->
+            <!-- </section> -->
+
+            <hr class="divider divider--light">
 
             <!-- analysis and report -->
             <section class="section section--padded">
@@ -111,11 +112,9 @@
         <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
         <script src="https://cdn.jsdelivr.net/npm/vega-lite@3"></script>
         <script src="https://cdn.jsdelivr.net/npm/vega-embed@4"></script>
-        <!-- data wrangling -->
-        <script src="./js/main.js"></script>
         <!-- embed spec files for Vega visualization(s) -->
         <script src="./js/nyc-linked-vegalite-spec.js"></script>
-        <!-- render visuals -->
-        <script></script>
+        <!-- data wrangling and graph rendering -->
+        <script src="./js/main.js"></script>
     </body>
 </html>

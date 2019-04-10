@@ -23,21 +23,38 @@ const nyc = {
         "sample": 600
       }
     ],
+    "config": {
+      "style": {
+        "guide-label": {
+          "fill": "#525253",
+        },
+        "guide-title": {
+          "fill": "#525253",
+          "titlePadding": 30,
+        }
+      },
+      "title": {
+        "color": "#525253",
+        "offset": "20",
+      },
+    },
     "columns": 2,
     "concat": [
       {
         "encoding": {
           "color": {
             "condition": {
-              "title": "County",
               "field": "County",
               "selection": "input",
-              "type": "nominal"
+              "type": "nominal",
+              "scale": {"scheme": "tableau10"},
             },
             "value": "lightgrey"
           },
           "x": {
-            "axis": {"title": "Population"},
+            "axis": {
+              "title": "Population",
+            },
             "field": "TotalPop",
             "type": "quantitative"
           },
@@ -58,26 +75,26 @@ const nyc = {
             "bind": {
               "name": "County",
               "input": "select",
-              "options": ["Bronx", "Kings", "New York", "Queens", "Richmond"]
+              "options": [null, "Bronx", "Kings", "New York", "Queens", "Richmond"]
             }
           }
-        },
-        "transform": [{"filter": {"selection": "click"}}]
+        }
       },
       {
         "transform": [
           {
             "fold": ["Construction", "Office", "Production", "Professional", "Service"],
             "as": ["Industry", "Count"]
-          },
-          {
-            "filter": { "selection": "input" }
           }
         ],
         "encoding": {
           "x": {
             "field": "Industry",
             "type": "nominal",
+            "axis": {
+              "title": "Industry",
+              "labelAngle": "45",
+            }
           },
           "y": {
             "axis": {"title": "Number of Workers"},
@@ -89,7 +106,8 @@ const nyc = {
             "condition": {
               "field": "County",
               "type": "nominal",
-              "selection": "click"
+              "selection": "input",
+              "scale": {"scheme": "tableau10"},
             },
             "value": "lightgray"
           }
@@ -110,12 +128,14 @@ const nyc = {
           {
             "fold": ["Index Count", "Property Count", "Violent Count", "Firearm Count"],
             "as": ["Crime", "Values"]
-          },
-          {"filter": {"selection": "input"}}
+          }
         ],
         "encoding": {
           "x": {
-            "axis": {"title": "Type of Crime"},
+            "axis": {
+              "title": "Type of Crime",
+              "labelAngle": "45",
+            },
             "field": "Crime",
             "type": "nominal"
           },
@@ -126,34 +146,19 @@ const nyc = {
             "type": "quantitative"
           },
           "color": {
-            "condition": {"field": "County", "type": "nominal", "selection": "click"},
+            "condition": {
+              "field": "County", 
+              "type": "nominal", 
+              "selection": "input",
+              "scale": {"scheme": "tableau10"},
+            },
             "value": "lightgray"
           }
         },
         "title": "Record of Crime in New York",
         "width": 400,
         "height": 300,
-        "mark": "bar",
-        "selection": {
-          "click": {
-            "encodings": ["color"], 
-            "type": "multi"
-          }
-        }
+        "mark": "bar"
       }
     ]
-  }
-
-  getCrimesByYear(2015).then((df) => {
-    df = df.filter((row) => {
-      return row.get('County') === ('Bronx' || 'Kings' || 'New York' || 'Queens' || 'Richmond');
-    });
-    df = df.toCollection();
-    // nyc.transform[0].from.data.value = df;
-    // console.dir(nyc.transform[0].from.data);
-    vegaEmbed('#vis', nyc, {"actions": false}).then((result) => {
-      result.view.insert('crime-data', df);
-      result.view.runAsync();
-      console.log(result.view.data('crime-data'));
-    }).catch(err => console.log(err));
-  }); 
+  } 
