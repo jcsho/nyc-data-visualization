@@ -10,7 +10,7 @@
         <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
         <link rel="manifest" href="./assets/site.webmanifest">
-        <link href="https://fonts.googleapis.com/css?family=Rubik:300,400" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,700" rel="stylesheet">
         <!-- <link rel="stylesheet" href="./css/main.css"> -->
         <link rel="stylesheet" href="./css/bem.css">
     </head>
@@ -23,6 +23,7 @@
         </header>
 
         <main>
+            <!-- visualizations -->
             <section class="section">
                 <figure class="fig">
                     <!-- TODO - change to semantic tag, remove id attribute -->
@@ -35,6 +36,15 @@
                 </figure>
             </section>
 
+            <!-- tabular data -->
+
+            <section class="section">
+                <table class="table table--inject-data">
+                    <!-- injected from main.js -->
+                </table>
+            </section>
+
+            <!-- analysis and report -->
             <section class="section section--padded">
                 <article class="section__item">
                     <h3 class="section__heading">Defining the Problem</h3>
@@ -90,17 +100,22 @@
             </section>
         </main>
 
-        <footer>
+        <footer class="footer">
             <!-- insert stuff here -->
+            <h5 class="footer__text">&copy; MIT License 2019</h5>
         </footer>
 
+        <!-- import DataFrame for data wrangling -->
+        <script src="https://gmousse.github.io/dataframe-js/dist/dataframe.min.js"></script>
         <!-- import Vega for creating visulization -->
         <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
         <script src="https://cdn.jsdelivr.net/npm/vega-lite@3"></script>
         <script src="https://cdn.jsdelivr.net/npm/vega-embed@4"></script>
+        <!-- data wrangling -->
+        <script src="./js/main.js"></script>
         <!-- embed spec files for Vega visualization(s) -->
-        <script src="./nyc-linked-vegalite-spec.js"></script>
-        <!-- render graph in div -->
-        <script>vegaEmbed('#vis', nyc, {"actions": false});</script>
+        <script src="./js/nyc-linked-vegalite-spec.js"></script>
+        <!-- render visuals -->
+        <script></script>
     </body>
 </html>

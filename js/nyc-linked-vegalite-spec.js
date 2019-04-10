@@ -1,6 +1,7 @@
 const nyc = {
     "$schema": "https://vega.github.io/schema/vega-lite/v3.json",
     "data": {
+      "name": "census-data",
       "url": "https://gist.githubusercontent.com/justinhodev/bbe43324cbf228095e47bb471e5930f2/raw/632f57b671376fa8dcc3a8d5755e3004204da326/nyc_census_tracts.csv",
       "format": {"type": "csv"}
     },
@@ -9,7 +10,7 @@ const nyc = {
         "lookup": "County",
         "from": {
           "data": {
-            "url": "https://gist.githubusercontent.com/justinhodev/349f8d1f62c7568b65124e3e5065c905/raw/bb726161d66c3537e3e1e5f3e5775c3a5a4fbb43/nyc-crime-index.csv"
+            "name": "crime-data"
           },
           "key": "County",
           "fields": ["Index Count", "Property Count", "Violent Count", "Firearm Count"]
@@ -19,8 +20,7 @@ const nyc = {
         "filter": "datum.TotalPop > 0 && datum.Income > 0"
       },
       {
-        // "sample": 600
-        "sample": 100
+        "sample": 600
       }
     ],
     "columns": 2,
@@ -143,3 +143,17 @@ const nyc = {
       }
     ]
   }
+
+  getCrimesByYear(2015).then((df) => {
+    df = df.filter((row) => {
+      return row.get('County') === ('Bronx' || 'Kings' || 'New York' || 'Queens' || 'Richmond');
+    });
+    df = df.toCollection();
+    // nyc.transform[0].from.data.value = df;
+    // console.dir(nyc.transform[0].from.data);
+    vegaEmbed('#vis', nyc, {"actions": false}).then((result) => {
+      result.view.insert('crime-data', df);
+      result.view.runAsync();
+      console.log(result.view.data('crime-data'));
+    }).catch(err => console.log(err));
+  }); 

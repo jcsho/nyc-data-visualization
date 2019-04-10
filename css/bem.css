@@ -12,6 +12,7 @@
     --font: 'Rubik', sans-serif;
     --font-light: 300;
     --font-normal: 400;
+    --font-bold: 700;
 }
 
 body {
@@ -42,24 +43,30 @@ body {
 }
 
 .section--padded {
-    padding: 3rem 15vw 0 15vw;
+    padding: 1rem 15vw 0 15vw;
 }
 
 .section__item {
-    margin: 1em 0 0 0;
+    margin: 2rem 0 0 0;
 }
 
 .section__heading {
     font-size: 1.7em;
+    margin: 0;
 }
 
 .section__subheading {
     font-size: 1.1em;
+    font-weight: var(--font-normal);
 }
 
 .section__text {
     font-size: 1em;
     line-height: 2em;
+}
+
+.section__list-item {
+    margin: 1em 0 0 0;
 }
 
 /* links */
@@ -77,6 +84,37 @@ body {
     font-size: 1em;
     margin: 1em 0;
     font-weight: var(--font-light);
+}
+
+/* table */
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 0.5px solid var(--dark-gray);
+    background-color: var(--white);
+    border-radius: 0.5em;
+    box-shadow: 0.2em 0.2em 5px -3px var(--light-gray);
+}
+
+.table__row:hover {
+    background-color: var(--light-gray);
+}
+
+.table__heading {
+    font-weight: var(--font-normal);
+    font-size: 1.2em;
+    text-align: left;
+    padding: 0.5em 1.2em;
+}
+
+.table__text {
+    font-size: 1em;
+    padding: 0.5em 1.2em;
+    border-top: 1px solid var(--light-gray);
+}
+
+.table__heading:first-child, .table__text:first-child {
+    border-right: 1px solid var(--light-gray);
 }
 
 /* button */
@@ -104,6 +142,17 @@ body {
     margin: 0 0 0 0.3em;
     font-size: 0.8em;
     font-weight: var(--font-light);
+}
+
+/* footer */
+.footer {
+    padding: 1em 0 1em 40vw;
+}
+
+.footer__text {
+    color: var(--dark-gray);
+    font-weight: var(--font-light);
+    font-size: 0.6em;
 }
 
 /*!
@@ -144,7 +193,7 @@ select {
     border-color: transparent;
     border-bottom-color: var(--slate-gray);
     color: var(--dark-gray);
-    transition: color 0.1s ease;
+    transition: color 0.2s ease;
 }
 
 select:hover {
@@ -175,10 +224,10 @@ option:focus {
 
     /* section */
     .section--padded {
-        padding: 6rem 25vw 0 25vw;
+        padding: 2rem 25vw 0 25vw;
     }
 
     .section__item {
-        margin: 1.5em 0 0 0;
+        margin: 4rem 0 0 0;
     }
 }
