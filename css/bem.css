@@ -72,6 +72,13 @@ body {
     color: var(--dark-gray);
 }
 
+/* figure */
+.fig__caption {
+    font-size: 1em;
+    margin: 1em 0;
+    font-weight: var(--font-light);
+}
+
 /* button */
 .btn {
     display: inline-block;
@@ -124,6 +131,40 @@ body {
 
 .fa-github:before {
     content: "\f09b"; 
+}
+
+.vega-bind {
+    margin: 1em 0;
+}
+
+select {
+    margin: 0 0 0 1em;
+    background-color: var(--white);
+    padding: 0.5em 0 0.5em 0.7em;
+    border-color: transparent;
+    border-bottom-color: var(--slate-gray);
+    color: var(--dark-gray);
+    transition: color 0.1s ease;
+}
+
+select:hover {
+    cursor: pointer;
+    color: var(--slate-gray);
+}
+
+select:focus {
+    outline: none;
+}
+
+option {
+    background-color: var(--white);
+    color: var(--slate-gray);
+    border: none;
+    outline: none;
+}
+
+option:focus {
+    background-color: var(--dark-gray);
 }
 
 @media only screen and (min-width: 900px) {

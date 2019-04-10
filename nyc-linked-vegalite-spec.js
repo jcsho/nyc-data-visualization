@@ -19,7 +19,8 @@ const nyc = {
         "filter": "datum.TotalPop > 0 && datum.Income > 0"
       },
       {
-        "sample": 600
+        // "sample": 600
+        "sample": 100
       }
     ],
     "columns": 2,
@@ -30,7 +31,7 @@ const nyc = {
             "condition": {
               "title": "County",
               "field": "County",
-              "selection": "brush",
+              "selection": "input",
               "type": "nominal"
             },
             "value": "lightgrey"
@@ -50,7 +51,17 @@ const nyc = {
         "width": 400,
         "height": 300,
         "mark": "point",
-        "selection": {"brush": {"type": "interval"}},
+        "selection": {
+          "input": {
+            "type": "single",
+            "fields": ["County"],
+            "bind": {
+              "name": "County",
+              "input": "select",
+              "options": ["Bronx", "Kings", "New York", "Queens", "Richmond"]
+            }
+          }
+        },
         "transform": [{"filter": {"selection": "click"}}]
       },
       {
@@ -60,7 +71,7 @@ const nyc = {
             "as": ["Industry", "Count"]
           },
           {
-            "filter": { "selection": "brush" }
+            "filter": { "selection": "input" }
           }
         ],
         "encoding": {
@@ -100,7 +111,7 @@ const nyc = {
             "fold": ["Index Count", "Property Count", "Violent Count", "Firearm Count"],
             "as": ["Crime", "Values"]
           },
-          {"filter": {"selection": "brush"}}
+          {"filter": {"selection": "input"}}
         ],
         "encoding": {
           "x": {
