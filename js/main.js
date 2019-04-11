@@ -13,35 +13,55 @@ ny_crime.then((df) => {
     let columns = ["Crime", "County", "Amount"];
     let data = [];
     Counties.map((county) => {
+        // filter out data older than 2015
         let filtered = df.filter((row) => {
             return (row.get('Year') >= 2015 && row.get('County') === county);
         });
 
+        // get sum for each crime type
         CrimeTypes.map((crime) => {
             let row = {
                 Crime: crime.name,
                 County: county,
-                Amount: filtered.stat.sum(crime.column),
+                Amount: parseInt(filtered.stat.sum(crime.column)),
             };
             data.push(row);
         });
     });
 
     let crime_data = new dfjs.DataFrame(data, columns);
-    crime_data.show();
+    // crime_data.show(); // debug
 
     // change to JS object and insert into spec object (nyc)
     nyc.datasets['crime-data'] = crime_data.toCollection();
 
+    // TODO change default settings to fit smaller screens
+    // change size of graph for large screens
+    if (window.innerWidth > 900) {
+        nyc.concat.forEach((item) => {
+            item.width = window.innerWidth / 4;
+            item.height = window.innerWidth / 4;
+        })
+    }
+
+    // change graph layout for smaller screens
+    if (window.innerWidth < 900) {
+        nyc.columns = 1;
+        nyc.config.legend.orient = "top";
+        nyc.config.legend.direction = "vertical";
+    }
+
     // render the visuals
     vegaEmbed('#vis', nyc, {
-        // "actions": false // disable the floating button
+        "actions": false // * disable the floating button
     }).then((result) => {
         // TODO see how to change HTML text from vega spec
-        // change first select option text (null to All)
+        // * change first select option text (null to All)
         document.querySelector("option[value='null']").innerHTML = "All";
+
+        // TODO add event listener for screen size changes (responsive)
         // console.log(result.view); // show vega object
         // console.dir(result.view.data('crime-data')); // see compiled data from fold operation on crime
-        console.dir(result.view.data('data_2')); // see compiled data from fold operation on crime
+        // console.dir(result.view.data('data_2')); // see compiled data from fold operation on crime
     }).catch(err => console.log(err));
 });

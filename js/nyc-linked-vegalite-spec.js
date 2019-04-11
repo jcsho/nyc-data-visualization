@@ -32,6 +32,10 @@ const nyc = {
       "color": "#525253",
       "offset": "20",
     },
+    "legend": {
+      "orient": "left",
+      "offset": "35",
+    }
   },
   "columns": 2,
   "concat": [{
@@ -64,8 +68,6 @@ const nyc = {
         }
       },
       "title": "Household Income in New York",
-      "width": 400,
-      "height": 300,
       "mark": "point",
       "selection": {
         "brush": {
@@ -122,12 +124,10 @@ const nyc = {
               "scheme": "tableau10"
             },
           },
-          "value": "lightgray"
+          "value": "lightgray",
         }
       },
       "title": "Distribution of New Yorkers in the Workforce",
-      "width": 400,
-      "height": 300,
       "mark": "bar",
       "selection": {
         "click": {
@@ -163,13 +163,11 @@ const nyc = {
               "scheme": "tableau10"
             },
           },
-          "value": "lightgray"
+          "value": "lightgray",
         }
       },
       "title": "Record of Crime in New York",
-      "width": 400,
-      "height": 300,
-      "mark": "bar"
+      "mark": "bar",
     }
   ]
 }
