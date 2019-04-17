@@ -7,6 +7,12 @@ const CrimeTypes = [
     {column: 'Violent Count', name: 'Violence Crime'},
 ];
 
+const getCrimeByYear = async (df, year) => {
+    let data = await df;
+    data = data.filter(row => row.get('Year') == year);
+    return data.stat.sum('Index Count');
+}
+
 // get data from csv
 ny_crime.then((df) => {
     // create new DataFrame object with new specs
@@ -15,7 +21,7 @@ ny_crime.then((df) => {
     Counties.map((county) => {
         // filter out data older than 2015
         let filtered = df.filter((row) => {
-            return (row.get('Year') >= 2015 && row.get('County') === county);
+            return (row.get('Year') == 2015 && row.get('County') === county);
         });
 
         // get sum for each crime type

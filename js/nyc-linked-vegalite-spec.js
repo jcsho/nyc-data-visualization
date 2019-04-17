@@ -10,14 +10,6 @@ const nyc = {
       "type": "csv"
     }
   },
-  "transform": [
-    {
-      "filter": "datum.TotalPop > 0 && datum.Income > 0"
-    },
-    {
-      "sample": 1000
-    }
-  ],
   "config": {
     "style": {
       "guide-label": {
@@ -40,6 +32,14 @@ const nyc = {
   "columns": 2,
   "concat": [{
       "data": {"name": "census-data"},
+      "transform": [
+        {
+          "sample": 500,
+        },
+        {
+          "filter": "datum.TotalPop > 500 && datum.Income > 0"
+        }
+      ],
       "encoding": {
         "color": {
           "condition": {
@@ -67,7 +67,7 @@ const nyc = {
           "type": "quantitative"
         }
       },
-      "title": "Household Income in New York",
+      "title": "Household Income in New York State",
       "mark": "point",
       "selection": {
         "brush": {
@@ -103,7 +103,7 @@ const nyc = {
           "field": "Industry",
           "type": "nominal",
           "axis": {
-            "title": "Industry",
+            "title": "Industry Sectors",
             "labelAngle": "45",
           }
         },
@@ -166,7 +166,7 @@ const nyc = {
           "value": "lightgray",
         }
       },
-      "title": "Record of Crime in New York",
+      "title": "Record of Crime in New York State",
       "mark": "bar",
     }
   ]
