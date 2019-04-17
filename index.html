@@ -11,8 +11,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
         <link rel="manifest" href="./assets/site.webmanifest">
         <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,700" rel="stylesheet">
-        <!-- <link rel="stylesheet" href="./css/main.css"> -->
-        <link rel="stylesheet" href="./css/bem.css">
+        <link rel="stylesheet" href="./css/main.css">
     </head>
 
     <body>
@@ -26,9 +25,11 @@
             <!-- visualizations -->
             <section class="section section--wide-pad">
                 <figure class="fig">
+                    <figcaption class="fig__caption">
+                        Try dragging your mouse over the dots in the scatter plot or choose a New York County from the drop down to see more details!
+                    </figcaption>
                     <!-- TODO - change to semantic tag, remove id attribute -->
                     <div id="vis"></div>
-                    <figcaption class="fig__caption fig--padded">Click on the sections of the bar chart or select a County from the dropdown.</figcaption>
                     <a class="btn btn--light fig--padded" href="http://github.com/justinhodev/nyc-data-visualization" target="_blank">
                         <i class="btn__icon fab fa-github"></i>
                         <span class="btn__text">SEE SOURCE CODE</span>
