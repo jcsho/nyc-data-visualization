@@ -1,4 +1,4 @@
-const ny_crime = dfjs.DataFrame.fromCSV('https://gist.githubusercontent.com/justinhodev/349f8d1f62c7568b65124e3e5065c905/raw/bb726161d66c3537e3e1e5f3e5775c3a5a4fbb43/nyc-crime-index.csv');
+const ny_crime = dfjs.DataFrame.fromCSV('https://gist.githubusercontent.com/jcsho/349f8d1f62c7568b65124e3e5065c905/raw/bb726161d66c3537e3e1e5f3e5775c3a5a4fbb43/nyc-crime-index.csv');
 const Counties = ['Bronx', 'Kings', 'New York', 'Queens', 'Richmond'];
 const CrimeTypes = [
     {column: 'Index Count', name: 'Total Crime'}, 
