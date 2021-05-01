@@ -5,7 +5,7 @@ const nyc = {
   },
   "data": {
     "name": "census-data",
-    "url": "https://gist.githubusercontent.com/justinhodev/bbe43324cbf228095e47bb471e5930f2/raw/632f57b671376fa8dcc3a8d5755e3004204da326/nyc_census_tracts.csv",
+    "url": "https://gist.githubusercontent.com/jcsho/bbe43324cbf228095e47bb471e5930f2/raw/632f57b671376fa8dcc3a8d5755e3004204da326/nyc_census_tracts.csv",
     "format": {
       "type": "csv"
     }
